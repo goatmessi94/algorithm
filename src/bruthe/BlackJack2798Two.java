@@ -10,9 +10,9 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 
 /**
- * BlackJack2798, 일반적 풀이 1
+ * BlackJack2798, 2. 조건 좀 더 줄이기
  */
-public class BlackJack2798 {
+public class BlackJack2798Two {
 
     public void solution() throws NumberFormatException, IOException {
         Scanner scanner = new Scanner(System.in);
@@ -36,14 +36,36 @@ public class BlackJack2798 {
         Arrays.sort(firstLineNumbers);
         // System.out.println("Sorted arr[] : " + Arrays.toString(firstLineNumbers));
         List<Integer> listInt = new ArrayList<>();
+        int limit = secondLineNumbers[1]; // 한계 조건
+
+        // 1. 합보다 큰 놈은 인덱스에서 제외한다.
+        // 2. 제일 작은놈의 최소는 3개를 더했을 때 합보다 작은놈
         
-        int limit = secondLineNumbers[1];
+        int maxIndex = 0;
+        int minIndex = 0;
+
+        for (int i=firstLineNumbers.length-1; i>=0; i--) {
+            if (firstLineNumbers[i] <= limit) {
+                maxIndex = i;
+                break;
+            }
+        }
+
+        for (int i=0; i<firstLineNumbers.length-3; i++) {
+            int total = firstLineNumbers[i] + firstLineNumbers[i+1] + firstLineNumbers[i+2];
+            if (total > limit) {
+                minIndex = i; break;
+            }
+        }
+        // System.out.println(maxIndex);
+        // System.out.println(minIndex);
+
         int minResultData = 0;
         int[] minResultArray = new int[3];
         boolean check = true;
 
         // 풀이 1. for문으로 전부 다 고려
-        for (int i=firstLineNumbers.length-1; i>1; i--) {
+        for (int i=maxIndex; i>minIndex; i--) {
             for (int j=i-1; j>0; j--) {
                 for (int k=j-1; k>=0; k--) {
                     int sum = firstLineNumbers[i] + firstLineNumbers[j] + firstLineNumbers[k];
@@ -77,9 +99,7 @@ public class BlackJack2798 {
 
     public static void main(String[] args) throws NumberFormatException, IOException {
 
-        //재귀로 풀면 될 것 같음
-        //처음 인덱스를 찾아 , 안되는 인덱스도 골라놔
-        BlackJack2798 blackJack2798 = new BlackJack2798();
+        BlackJack2798Two blackJack2798 = new BlackJack2798Two();
         blackJack2798.solution();
     }
 }
