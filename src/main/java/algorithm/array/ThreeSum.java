@@ -19,7 +19,7 @@ public class ThreeSum {
         List<List<Integer>> answerList = new ArrayList<>();
         Arrays.sort(nums);
         for (int i = 0; i <= nums.length-2; i++) {
-            if (i > 0 && nums[i] == nums[i-1])
+            if (i > 0 && nums[i] == nums[i-1]) // 기준이 동일한 경우 SKIP
                 continue;
 
             left = i+1;
@@ -52,7 +52,7 @@ public class ThreeSum {
     public static void main(String[] args) {
 
         ThreeSum threeSum = new ThreeSum();
-        List<List<Integer>> answer = threeSum.threeSum(new int[] {-1, 0, 1, 2, -1, -5});
+        List<List<Integer>> answer = threeSum.threeSum(new int[] {0,4,-2, -2,-2});
 
         for (int i = 0; i < answer.size(); i++) {
             System.out.println(answer.get(i).toString());
