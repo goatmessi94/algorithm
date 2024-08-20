@@ -14,4 +14,4 @@
 
 배열
 1. https://leetcode.com/problems/trapping-rain-water/description/
-2. 
+2. ㅋ

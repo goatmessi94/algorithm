@@ -32,6 +32,6 @@ public class TrappingRainWater {
 
     public static void main(String[] args) {
         TrappingRainWater trappingRainWater = new TrappingRainWater();
-        System.out.println(trappingRainWater.trap(new int[]{4,3,2,1,0,5}));
+        System.out.println(trappingRainWater.trap(new int[]{2,2,0,0,4}));
     }
 }

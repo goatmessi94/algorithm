@@ -15,7 +15,4 @@ public class SwapNodesInPairs {
 
         return head;
     }
-
-
-
 }
